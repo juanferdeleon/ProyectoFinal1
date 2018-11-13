@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="newOperation.NewOperationController">
+   <children>
+      <Label layoutX="477.0" layoutY="102.0" text="¡Gracias por preferirnos!">
+         <font>
+            <Font name="Century Gothic" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="472.0" layoutY="278.0" text="¿Desea reallizar otra operacion?">
+         <font>
+            <Font name="Century Gothic" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="465.0" layoutY="448.0" text="&lt; SI">
+         <font>
+            <Font name="Century Gothic" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="830.0" layoutY="447.0" text="NO &gt;">
+         <font>
+            <Font name="Century Gothic" size="40.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="withdrawalMenu.WithdrawalMenuController">
+   <children>
+      <Label layoutX="535.0" layoutY="185.0" text="Retiro Monetario">
+         <font>
+            <Font name="Century Gothic" size="48.0" />
+         </font>
+      </Label>
+      <Button layoutX="324.0" layoutY="199.0" mnemonicParsing="false" onAction="#returnWindow" text="Regresar">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="245.0" layoutY="322.0" mnemonicParsing="false" onAction="#withdraw100" text="&lt;">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="245.0" layoutY="399.0" mnemonicParsing="false" onAction="#withdraw200" text="&lt;">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="245.0" layoutY="477.0" mnemonicParsing="false" onAction="#withdraw300" text="&lt;">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="245.0" layoutY="549.0" mnemonicParsing="false" onAction="#withdraw400" text="&lt;">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="320.0" layoutY="324.0" text="Q. 100.00">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="320.0" layoutY="401.0" text="Q. 200.00">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="324.0" layoutY="479.0" text="Q 300.00">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="320.0" layoutY="551.0" text="Q. 400.00">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="1086.0" layoutY="322.0" mnemonicParsing="false" onAction="#withdraw500" text="&gt;">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="1086.0" layoutY="399.0" mnemonicParsing="false" onAction="#withdraw600" text="&gt;">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="1086.0" layoutY="477.0" mnemonicParsing="false" onAction="#withdraw700" text="&gt;">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="1086.0" layoutY="549.0" mnemonicParsing="false" onAction="#variableAmountMenuWindow" text="&gt;">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="945.0" layoutY="324.0" text="Q. 500.00">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="949.0" layoutY="401.0" text="Q 600.00">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="945.0" layoutY="481.0" text="Q. 700.00">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="894.0" layoutY="551.0" text="Monto Variable">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

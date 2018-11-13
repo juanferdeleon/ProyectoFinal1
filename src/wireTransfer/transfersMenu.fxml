@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wireTransfer.WireTransferController">
+   <children>
+      <Button layoutX="298.0" layoutY="563.0" mnemonicParsing="false" onAction="#userMenuWindow" text="Regresar">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="903.0" layoutY="563.0" mnemonicParsing="false" onAction="#makeTransaction" text="Transferir">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="519.0" layoutY="148.0" text="Transferencias">
+         <font>
+            <Font name="Century Gothic" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="298.0" layoutY="373.0" text="Verifique No. de Cuenta">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="298.0" layoutY="295.0" text="No. de Cuenta a transferir">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="acctNoId" layoutX="776.0" layoutY="298.0" prefHeight="25.0" prefWidth="293.0" />
+      <TextField fx:id="verAcctNoId" layoutX="776.0" layoutY="376.0" prefHeight="25.0" prefWidth="293.0" />
+      <Label layoutX="298.0" layoutY="450.0" text="Cantidad">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="quant" layoutX="776.0" layoutY="453.0" prefHeight="25.0" prefWidth="293.0" />
+   </children>
+</AnchorPane>

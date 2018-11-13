@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="changePin.ChangePinController">
+   <children>
+      <Button layoutX="251.0" layoutY="606.0" mnemonicParsing="false" onAction="#userMenuWindow" text="Regresar">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="947.0" layoutY="606.0" mnemonicParsing="false" onAction="#changePasswordButton" text="Realizar cambio">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="489.0" layoutY="128.0" text="Cambio de PIN">
+         <font>
+            <Font name="Century Gothic" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="252.0" layoutY="247.0" text="Contraseña actual">
+         <font>
+            <Font name="Century Gothic" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="251.0" layoutY="376.0" text="Nueva contraseña">
+         <font>
+            <Font name="Century Gothic" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="252.0" layoutY="517.0" text="Confirmar contraseña">
+         <font>
+            <Font name="Century Gothic" size="28.0" />
+         </font>
+      </Label>
+      <TextField fx:id="verNewPassword" layoutX="609.0" layoutY="522.0" prefHeight="25.0" prefWidth="503.0" />
+      <TextField fx:id="newPassword" layoutX="613.0" layoutY="381.0" prefHeight="25.0" prefWidth="503.0" />
+      <TextField fx:id="currentPassword" layoutX="609.0" layoutY="252.0" prefHeight="25.0" prefWidth="503.0" />
+   </children>
+</AnchorPane>

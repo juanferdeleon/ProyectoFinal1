@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="withdrawalMenu.VariableAmountMenuController">
+   <children>
+      <Label layoutX="490.0" layoutY="193.0" text="Retiro Monetario">
+         <font>
+            <Font name="Century Gothic" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="575.0" layoutY="366.0" text="Cantidad  a retirar">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="quantId" layoutX="575.0" layoutY="426.0" prefHeight="25.0" prefWidth="216.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button layoutX="490.0" layoutY="528.0" mnemonicParsing="false" onAction="#withdrawalMenuWindow" text="Regresar">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="770.0" layoutY="528.0" mnemonicParsing="false" onAction="#withdrawMoney" text="Retirar">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

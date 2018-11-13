@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alertBoxes.UserNotFoundTransController">
+   <children>
+      <Label layoutX="225.0" layoutY="130.0" text="Disculpe las molestias">
+         <font>
+            <Font name="Century Gothic" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="237.0" layoutY="285.0" text="El No. de Cuenta ingresado no es valido.">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="424.0" layoutY="384.0" mnemonicParsing="false" onAction="#wireTransferMenuWindow" text="Regresar">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
