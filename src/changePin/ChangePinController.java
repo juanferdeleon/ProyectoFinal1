@@ -1,15 +1,21 @@
 package changePin;
 
+import alertBoxes.UnableChangePinController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import people.User;
+import printReceipt.PrintReceiptController;
+import userMenu.UserMenuController;
+import withdrawalMenu.WithdrawalMenuController;
 
+import javax.print.attribute.standard.PrinterInfo;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,18 +28,66 @@ public class ChangePinController {
     TextField currentPassword;
 
     @FXML
-    TextField newPassword;
+    PasswordField newPassword;
 
     @FXML
-    TextField verNewPassword;
+    PasswordField verNewPassword;
 
     User user = new User();
 
     public void changePasswordButton(ActionEvent event){
         if (verifyInfo(Integer.parseInt(currentPassword.getText()), Integer.parseInt(newPassword.getText()), Integer.parseInt(verNewPassword.getText()))){
             changePassword(Integer.parseInt(newPassword.getText()));
+            printReceipt(event);
+        } else {
+            alertBox(event);
         }
+    }
 
+    public void alertBox(ActionEvent event){
+        Parent root1;
+
+        try {
+            //Cierra la actual ventana
+            ((Node)event.getSource()).getScene().getWindow().hide();
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../alertBoxes/unableChangePin.fxml"));
+            root1 = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Unable to Change Pin");
+            stage.setScene(new Scene(root1));
+
+            //Envia la informacion del usuario ingresado a la nueva ventana
+            UnableChangePinController unableChangePinController= fxmlLoader.getController();
+            unableChangePinController.setUser(user);
+
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void printReceipt(ActionEvent event){
+        Parent root1;
+
+        try {
+            //Cierra la actual ventana
+            ((Node)event.getSource()).getScene().getWindow().hide();
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../printReceipt/ReceiptsMenu.fxml"));
+            root1 = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Withdrawal Money Succesful");
+            stage.setScene(new Scene(root1));
+
+            //Envia la informacion del usuario ingresado a la nueva ventana
+            PrintReceiptController printReceiptController = fxmlLoader.getController();
+            printReceiptController.setUser(user);
+
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void changePassword(Integer newPassword){
@@ -44,6 +98,7 @@ public class ChangePinController {
                     "SET pasword=" + newPassword +
                     " WHERE id=" + user.getPersonId() + ";");
             preparedStatement.executeUpdate();
+            user.setAccountPassword(newPassword);
         }catch (Exception ex){
             System.out.println(ex.getMessage());
         }
@@ -68,6 +123,10 @@ public class ChangePinController {
             Stage stage = new Stage();
             stage.setTitle("User Menu");
             stage.setScene(new Scene(root1));
+
+            //Envia la informacion del usuario ingresado a la nueva ventana
+            UserMenuController userMenuController = fxmlLoader.getController();
+            userMenuController.setUser(user);
 
             stage.show();
         }catch (IOException e){
