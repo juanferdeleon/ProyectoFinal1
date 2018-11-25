@@ -127,6 +127,7 @@ public class ChangePinController {
             //Envia la informacion del usuario ingresado a la nueva ventana
             UserMenuController userMenuController = fxmlLoader.getController();
             userMenuController.setUser(user);
+            userMenuController.setWelcomeId("Bienvenido/a " + user.getPersonFirstName());
 
             stage.show();
         }catch (IOException e){

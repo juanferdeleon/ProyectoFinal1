@@ -25,21 +25,21 @@
          </font>
       </Label>
       <TextField fx:id="accountNo" layoutX="541.0" layoutY="336.0" prefHeight="25.0" prefWidth="563.0" />
-      <Button layoutX="263.0" layoutY="577.0" mnemonicParsing="false" onAction="#adminLoginMenuWindow" text="&lt;">
-         <font>
-            <Font name="Century Gothic" size="18.0" />
-         </font>
-      </Button>
       <Label layoutX="303.0" layoutY="579.0" text="Administrador">
          <font>
             <Font name="Century Gothic" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="1070.0" layoutY="487.0" mnemonicParsing="false" onAction="#userMenuWindow" text="Ir">
+      <PasswordField fx:id="accountPassword" layoutX="541.0" layoutY="420.0" prefHeight="25.0" prefWidth="563.0" />
+      <Button layoutX="1070.0" layoutY="495.0" mnemonicParsing="false" onAction="#userMenuWindow" text="Ir">
          <font>
             <Font name="Century Gothic" size="18.0" />
          </font>
       </Button>
-      <PasswordField fx:id="accountPassword" layoutX="541.0" layoutY="420.0" prefHeight="25.0" prefWidth="563.0" />
+      <Button layoutX="263.0" layoutY="577.0" mnemonicParsing="false" onAction="#adminLoginMenuWindow" text="&lt;">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
