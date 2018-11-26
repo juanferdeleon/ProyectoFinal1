@@ -7,18 +7,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import people.User;
+import objects.ATM;
 import printReceipt.PrintReceiptController;
 import userMenu.UserMenuController;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 
 public class WithdrawalMenuController {
 
-    User user = new User();
+    ATM atm = new ATM();
 
     public void variableAmountMenuWindow(ActionEvent event){
         Parent root1;
@@ -35,7 +32,7 @@ public class WithdrawalMenuController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             VariableAmountMenuController variableAmountMenuController = fxmlLoader.getController();
-            variableAmountMenuController.setUser(user);
+            variableAmountMenuController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -58,8 +55,8 @@ public class WithdrawalMenuController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             UserMenuController userMenuController = fxmlLoader.getController();
-            userMenuController.setUser(user);
-            userMenuController.setWelcomeId("Bienvenido/a " + user.getPersonFirstName());
+            userMenuController.setAtm(atm);
+            userMenuController.setWelcomeId("Bienvenido/a " + atm.getUser().getPersonFirstName());
 
             stage.show();
         }catch (IOException e){
@@ -67,79 +64,41 @@ public class WithdrawalMenuController {
         }
     }
 
-    public void setUser(User user){
-        this.user = user;
-    }
-
     public void withdraw100(ActionEvent event){
-        if (user.getAccountBalance() - 100 >= 0){
-            withdrawMoney(100, event);
-        }else{
-            alertBox(event);
-        }
+        withdrawMoney(100, event);
     }
 
     public void withdraw200(ActionEvent event){
-        if (user.getAccountBalance() - 200 >= 0){
-            withdrawMoney(200, event);
-        }else{
-            alertBox(event);
-        }
+        withdrawMoney(200, event);
     }
 
     public void withdraw300(ActionEvent event){
-        if (user.getAccountBalance() - 300 >= 0){
-            withdrawMoney(300, event);
-        }else{
-            alertBox(event);
-        }
+        withdrawMoney(300, event);
     }
 
     public void withdraw400(ActionEvent event){
-        if (user.getAccountBalance() - 400 >= 0){
-            withdrawMoney(400, event);
-        }else{
-            alertBox(event);
-        }
+        withdrawMoney(400, event);
     }
 
     public void withdraw500(ActionEvent event){
-        if (user.getAccountBalance() - 500 >= 0){
-            withdrawMoney(500, event);
-        }else{
-            alertBox(event);
-        }
+        withdrawMoney(500, event);
     }
 
     public void withdraw600(ActionEvent event){
-        if (user.getAccountBalance() - 600 >= 0){
-            withdrawMoney(600, event);
-        }else{
-            alertBox(event);
-        }
+        withdrawMoney(600, event);
     }
 
     public void withdraw700(ActionEvent event){
-        if (user.getAccountBalance() - 700 >= 0){
-            withdrawMoney(700, event);
-        }else{
-            alertBox(event);
-        }
+        withdrawMoney(700, event);
     }
 
-    public void withdrawMoney(Integer withdrawalAmmount, ActionEvent event){
-        try{
-            Double newAmmount = user.getAccountBalance() - withdrawalAmmount;
-            Class.forName("org.postgresql.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ATM", "postgres", "postgres");
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE public.users " +
-                    "SET account_balance=" + newAmmount +
-                    " WHERE id=" + user.getPersonId() + ";");
-            preparedStatement.executeUpdate();
-            user.setAccountBalance(newAmmount);
+    public void withdrawMoney(Integer amount, ActionEvent event){
+        if (atm.getUser().getAccountBalance() - amount >= 0){
+            atm.withdrawMoney(amount);
+            atm.registerTransaccion(amount);
             withdrawSuccessful(event);
-        }catch (Exception ex){
-            System.out.println(ex.getMessage());
+        }else{
+            alertBox(event);
         }
     }
 
@@ -158,7 +117,7 @@ public class WithdrawalMenuController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             PrintReceiptController printReceiptController = fxmlLoader.getController();
-            printReceiptController.setUser(user);
+            printReceiptController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -181,12 +140,14 @@ public class WithdrawalMenuController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             UnableWithdrawalMoney unableWithdrawalMoney = fxmlLoader.getController();
-            unableWithdrawalMoney.setUser(user);
+            unableWithdrawalMoney.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
             e.printStackTrace();
         }
     }
+
+    public void setAtm(ATM atm){this.atm = atm;}
 
 }

@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import objects.ATM;
 import people.User;
 import userMenu.UserMenuController;
 
@@ -13,7 +14,7 @@ import java.io.IOException;
 
 public class PrintReceiptController {
 
-    User user = new User();
+    ATM atm = new ATM();
 
     public void doNotPrintReceipt(ActionEvent event){
         Parent root1;
@@ -30,8 +31,8 @@ public class PrintReceiptController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             UserMenuController userMenuController = fxmlLoader.getController();
-            userMenuController.setUser(user);
-            userMenuController.setWelcomeId("Bienvenido/a " + user.getPersonFirstName());
+            userMenuController.setAtm(atm);
+            userMenuController.setWelcomeId("Bienvenido/a " + atm.getUser().getPersonFirstName());
 
             stage.show();
         }catch (IOException e){
@@ -39,8 +40,6 @@ public class PrintReceiptController {
         }
     }
 
-    public void setUser(User user){
-        this.user = user;
-    }
+    public void setAtm(ATM atm){this.atm = atm;}
 
 }

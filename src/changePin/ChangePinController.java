@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import objects.ATM;
 import people.User;
 import printReceipt.PrintReceiptController;
 import userMenu.UserMenuController;
@@ -33,7 +34,7 @@ public class ChangePinController {
     @FXML
     PasswordField verNewPassword;
 
-    User user = new User();
+    ATM atm = new ATM();
 
     public void changePasswordButton(ActionEvent event){
         if (verifyInfo(Integer.parseInt(currentPassword.getText()), Integer.parseInt(newPassword.getText()), Integer.parseInt(verNewPassword.getText()))){
@@ -59,7 +60,7 @@ public class ChangePinController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             UnableChangePinController unableChangePinController= fxmlLoader.getController();
-            unableChangePinController.setUser(user);
+            unableChangePinController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -82,7 +83,7 @@ public class ChangePinController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             PrintReceiptController printReceiptController = fxmlLoader.getController();
-            printReceiptController.setUser(user);
+            printReceiptController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -96,16 +97,16 @@ public class ChangePinController {
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ATM", "postgres", "postgres");
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE public.users " +
                     "SET pasword=" + newPassword +
-                    " WHERE id=" + user.getPersonId() + ";");
+                    " WHERE id=" + atm.getUser().getPersonId() + ";");
             preparedStatement.executeUpdate();
-            user.setAccountPassword(newPassword);
+            atm.getUser().setAccountPassword(newPassword);
         }catch (Exception ex){
             System.out.println(ex.getMessage());
         }
     }
 
     public Boolean verifyInfo(Integer currentPassword, Integer newPassword, Integer verNewPassword){
-        if (currentPassword.equals(user.getAccountPassword()) && newPassword.equals(verNewPassword)){
+        if (currentPassword.equals(atm.getUser().getAccountPassword()) && newPassword.equals(verNewPassword)){
             return true;
         }
         return false;
@@ -126,8 +127,8 @@ public class ChangePinController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             UserMenuController userMenuController = fxmlLoader.getController();
-            userMenuController.setUser(user);
-            userMenuController.setWelcomeId("Bienvenido/a " + user.getPersonFirstName());
+            userMenuController.setAtm(atm);
+            userMenuController.setWelcomeId("Bienvenido/a " + atm.getUser().getPersonFirstName());
 
             stage.show();
         }catch (IOException e){
@@ -135,8 +136,8 @@ public class ChangePinController {
         }
     }
 
-    public void setUser(User user){
-        this.user = user;
+    public void setAtm(ATM atm){
+        this.atm = atm;
     }
 
 }

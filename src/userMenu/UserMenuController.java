@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import objects.ATM;
 import people.User;
 import javafx.scene.control.Label;
 import wireTransfer.WireTransferController;
@@ -21,7 +22,7 @@ public class UserMenuController {
     @FXML
     Label welcomeId;
 
-    User user = new User();
+    ATM atm = new ATM();
 
     public void withdrawalMenuWindow(ActionEvent event){
         Parent root1;
@@ -38,7 +39,7 @@ public class UserMenuController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             WithdrawalMenuController withdrawalMenuController = fxmlLoader.getController();
-            withdrawalMenuController.setUser(user);
+            withdrawalMenuController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -61,8 +62,8 @@ public class UserMenuController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             AccountBalanceMenuController accountBalanceMenuController= fxmlLoader.getController();
-            accountBalanceMenuController.setAcctBalance("Q. " + user.getAccountBalance());
-            accountBalanceMenuController.setUser(user);
+            accountBalanceMenuController.setAcctBalance("Q. " + atm.getUser().getAccountBalance());
+            accountBalanceMenuController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -85,7 +86,7 @@ public class UserMenuController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             WireTransferController wireTransferController = fxmlLoader.getController();
-            wireTransferController.setUser(user);
+            wireTransferController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -108,7 +109,7 @@ public class UserMenuController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             ChangePinController changePinController = fxmlLoader.getController();
-            changePinController.setUser(user);
+            changePinController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -139,8 +140,8 @@ public class UserMenuController {
         this.welcomeId.setText(welcomeId);
     }
 
-    public void setUser(User user){
-        this.user = user;
+    public void setAtm(ATM atm){
+        this.atm = atm;
     }
 
 }

@@ -6,14 +6,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import people.User;
+import objects.ATM;
 import wireTransfer.WireTransferController;
 
 import java.io.IOException;
 
 public class UserNotFoundTransController {
 
-    User user = new User();
+    ATM atm = new ATM();
 
     public void wireTransferMenuWindow(ActionEvent event){
         Parent root1;
@@ -30,7 +30,7 @@ public class UserNotFoundTransController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             WireTransferController wireTransferController = fxmlLoader.getController();
-            wireTransferController.setUser(user);
+            wireTransferController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -38,9 +38,8 @@ public class UserNotFoundTransController {
         }
     }
 
-
-    public void setUser(User user){
-        this.user = user;
+    public void setAtm(ATM atm){
+        this.atm = atm;
     }
 
 }

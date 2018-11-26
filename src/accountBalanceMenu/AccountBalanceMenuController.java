@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import objects.ATM;
 import people.User;
 import userMenu.UserMenuController;
 
@@ -18,7 +19,7 @@ public class AccountBalanceMenuController {
     @FXML
     Label acctBalance;
 
-    User user = new User();
+    ATM atm = new ATM();
 
     public void userMenuWindow(ActionEvent event){
         Parent root1;
@@ -35,8 +36,8 @@ public class AccountBalanceMenuController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             UserMenuController userMenuController = fxmlLoader.getController();
-            userMenuController.setUser(user);
-            userMenuController.setWelcomeId("Bienvenido/a " + user.getPersonFirstName());
+            userMenuController.setAtm(atm);
+            userMenuController.setWelcomeId("Bienvenido/a " + atm.getUser().getPersonFirstName());
 
             stage.show();
         }catch (IOException e){
@@ -48,7 +49,7 @@ public class AccountBalanceMenuController {
         this.acctBalance.setText(acctBalance);
     }
 
-    public void setUser(User user){
-        this.user = user;
+    public void setAtm(ATM atm){
+        this.atm = atm;
     }
 }

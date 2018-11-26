@@ -7,13 +7,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import objects.ATM;
 import people.User;
 
 import java.io.IOException;
 
 public class UnableChangePinController {
 
-    User user = new User();
+    ATM atm = new ATM();
 
     public void changePinMenuWindow(ActionEvent event){
         Parent root1;
@@ -30,7 +31,7 @@ public class UnableChangePinController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             ChangePinController changePinController = fxmlLoader.getController();
-            changePinController.setUser(user);
+            changePinController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -38,8 +39,8 @@ public class UnableChangePinController {
         }
     }
 
-    public void setUser(User user){
-        this.user = user;
+    public void setAtm(ATM atm){
+        this.atm = atm;
     }
 
 }

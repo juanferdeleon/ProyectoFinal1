@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import objects.ATM;
 import people.User;
 import withdrawalMenu.WithdrawalMenuController;
 
@@ -13,7 +14,7 @@ import java.io.IOException;
 
 public class UnableWithdrawalMoney {
 
-    User user = new User();
+    ATM atm = new ATM();
 
     public void withdrawalMenuWindow(ActionEvent event){
         Parent root1;
@@ -30,7 +31,7 @@ public class UnableWithdrawalMoney {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             WithdrawalMenuController withdrawalMenuController = fxmlLoader.getController();
-            withdrawalMenuController.setUser(user);
+            withdrawalMenuController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -38,8 +39,6 @@ public class UnableWithdrawalMoney {
         }
     }
 
-    public void setUser(User user){
-        this.user = user;
-    }
+    public void setAtm(ATM atm){this.atm = atm;}
 
 }

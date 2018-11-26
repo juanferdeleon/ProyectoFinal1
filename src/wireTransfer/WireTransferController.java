@@ -1,6 +1,7 @@
 package wireTransfer;
 
 import alertBoxes.AcctNoDosntMatchController;
+import alertBoxes.UnableWithdrawManeyTransController;
 import alertBoxes.UnableWithdrawalMoney;
 import alertBoxes.UserNotFoundTransController;
 import javafx.event.ActionEvent;
@@ -11,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import objects.ATM;
 import people.User;
 import printReceipt.PrintReceiptController;
 import userMenu.UserMenuController;
@@ -20,7 +22,7 @@ import java.sql.*;
 
 public class WireTransferController {
 
-    User user = new User();
+    ATM atm = new ATM();
 
     @FXML
     TextField acctNoId;
@@ -30,10 +32,6 @@ public class WireTransferController {
 
     @FXML
     TextField quant;
-
-    public void setUser(User user){
-        this.user = user;
-    }
 
     public void userMenuWindow(ActionEvent event){
         Parent root1;
@@ -50,8 +48,8 @@ public class WireTransferController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             UserMenuController userMenuController = fxmlLoader.getController();
-            userMenuController.setUser(user);
-            userMenuController.setWelcomeId("Bienvenido/a " + user.getPersonFirstName());
+            userMenuController.setAtm(atm);
+            userMenuController.setWelcomeId("Bienvenido/a " + atm.getUser().getPersonFirstName());
 
             stage.show();
         }catch (IOException e){
@@ -63,8 +61,8 @@ public class WireTransferController {
         if (verifyAccount(acctNoId.getText(), verAcctNoId.getText())) {
             User transUser = checkIfUser(connectToDB(), Integer.parseInt(acctNoId.getText()));
             if (transUser != null) {
-                if (user.getAccountBalance() - Double.parseDouble(quant.getText()) >= 0) {
-                    withdrawMoney(Double.parseDouble(quant.getText()), user);
+                if (atm.getUser().getAccountBalance() - Double.parseDouble(quant.getText()) >= 0) {
+                    withdrawMoney(Double.parseDouble(quant.getText()), atm.getUser());
                     depositMoney(Double.parseDouble(quant.getText()), transUser);
                     withdrawSuccessful(event);
                 } else {
@@ -133,7 +131,7 @@ public class WireTransferController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             PrintReceiptController printReceiptController = fxmlLoader.getController();
-            printReceiptController.setUser(user);
+            printReceiptController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -148,15 +146,16 @@ public class WireTransferController {
             //Cierra la actual ventana
             ((Node) event.getSource()).getScene().getWindow().hide();
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../alertBoxes/unableWithdrawalMoney.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../alertBoxes/unableWithdrawalManeyTransController.fxml"));
             root1 = fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Unable Withdrawal Money");
             stage.setScene(new Scene(root1));
 
             //Envia la informacion del usuario ingresado a la nueva ventana
-            UnableWithdrawalMoney unableWithdrawalMoney = fxmlLoader.getController();
-            unableWithdrawalMoney.setUser(user);
+            UnableWithdrawManeyTransController unableWithdrawManeyTransController = fxmlLoader.getController();
+            unableWithdrawManeyTransController.setAtm(atm);
+
 
             stage.show();
         } catch (IOException e) {
@@ -179,7 +178,7 @@ public class WireTransferController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             AcctNoDosntMatchController acctNoDosntMatchController= fxmlLoader.getController();
-            acctNoDosntMatchController.setUser(user);
+            acctNoDosntMatchController.setAtm(atm);
 
             stage.show();
         } catch (IOException e) {
@@ -202,7 +201,7 @@ public class WireTransferController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             UserNotFoundTransController userNotFoundTransController = fxmlLoader.getController();
-            userNotFoundTransController.setUser(user);
+            userNotFoundTransController.setAtm(atm);
 
             stage.show();
         } catch (IOException e) {
@@ -243,4 +242,7 @@ public class WireTransferController {
         return null;
     }
 
+    public void setAtm(ATM atm){
+        this.atm = atm;
+    }
 }

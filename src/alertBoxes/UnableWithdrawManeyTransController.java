@@ -6,13 +6,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import objects.ATM;
 import people.User;
 import wireTransfer.WireTransferController;
 
 import java.io.IOException;
 
-public class unableWithdrawManeyTransController {
-    User user = new User();
+public class UnableWithdrawManeyTransController {
+
+    ATM atm = new ATM();
 
     public void wireTransferMenuWindow(ActionEvent event){
         Parent root1;
@@ -29,7 +31,7 @@ public class unableWithdrawManeyTransController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             WireTransferController wireTransferController = fxmlLoader.getController();
-            wireTransferController.setUser(user);
+            wireTransferController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -38,7 +40,7 @@ public class unableWithdrawManeyTransController {
     }
 
 
-    public void setUser(User user){
-        this.user = user;
+    public void setAtm(ATM atm){
+        this.atm = atm;
     }
 }

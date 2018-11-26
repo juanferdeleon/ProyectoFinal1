@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import objects.ATM;
 import people.User;
 import printReceipt.PrintReceiptController;
 
@@ -22,7 +23,7 @@ public class VariableAmountMenuController {
     @FXML
     TextField quantId;
 
-    User user = new User();
+    ATM atm = new ATM();
 
     public void withdrawalMenuWindow(ActionEvent event){
         Parent root1;
@@ -39,7 +40,7 @@ public class VariableAmountMenuController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             WithdrawalMenuController withdrawalMenuController = fxmlLoader.getController();
-            withdrawalMenuController.setUser(user);
+            withdrawalMenuController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -48,28 +49,12 @@ public class VariableAmountMenuController {
     }
 
     public void withdrawMoney(ActionEvent event){
-
-        if (user.getAccountBalance() - Double.parseDouble(quantId.getText()) >= 0){
-            withdrawMoney(Double.parseDouble(quantId.getText()), event);
+        if (atm.getUser().getAccountBalance() - Double.parseDouble(quantId.getText()) >= 0){
+            atm.withdrawMoney(Integer.parseInt(quantId.getText()));
+            atm.registerTransaccion(Integer.parseInt(quantId.getText()));
+            withdrawSuccessful(event);
         }else{
             alertBox(event);
-        }
-
-    }
-
-    public void withdrawMoney(Double withdrawalAmmount, ActionEvent event){
-        try{
-            Double newAmmount = user.getAccountBalance() - withdrawalAmmount;
-            Class.forName("org.postgresql.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ATM", "postgres", "postgres");
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE public.users " +
-                    "SET account_balance=" + newAmmount +
-                    " WHERE id=" + user.getPersonId() + ";");
-            preparedStatement.executeUpdate();
-            user.setAccountBalance(newAmmount);
-            withdrawSuccessful(event);
-        }catch (Exception ex){
-            System.out.println(ex.getMessage());
         }
     }
 
@@ -88,7 +73,7 @@ public class VariableAmountMenuController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             PrintReceiptController printReceiptController = fxmlLoader.getController();
-            printReceiptController.setUser(user);
+            printReceiptController.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -111,7 +96,7 @@ public class VariableAmountMenuController {
 
             //Envia la informacion del usuario ingresado a la nueva ventana
             UnableWithdrawalMoney unableWithdrawalMoney = fxmlLoader.getController();
-            unableWithdrawalMoney.setUser(user);
+            unableWithdrawalMoney.setAtm(atm);
 
             stage.show();
         }catch (IOException e){
@@ -119,9 +104,7 @@ public class VariableAmountMenuController {
         }
     }
 
-    public void setUser(User user){
-        this.user = user;
-    }
+    public void setAtm(ATM atm){this.atm = atm;}
 
 }
 

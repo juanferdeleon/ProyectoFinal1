@@ -15,6 +15,7 @@ import userMenu.UserMenuController;
 
 import java.io.IOException;
 import java.sql.*;
+import java.time.Instant;
 
 public class Controller {
 
@@ -30,8 +31,9 @@ public class Controller {
         Parent root1;
 
         User user = checkIfUser(connectToDB(), Integer.parseInt(accountNo.getText()), Integer.parseInt(accountPassword.getText()));
+        atm.setUser(user);
 
-        if ( user != null){
+        if ( atm.getUser()!= null){
             try {
                 //Cierra la actual ventana
                 ((Node)event.getSource()).getScene().getWindow().hide();
@@ -45,8 +47,8 @@ public class Controller {
 
                 //Envia la informacion del usuario ingresado a la nueva ventana
                 UserMenuController userMenuController = fxmlLoader.getController();
-                userMenuController.setUser(user);
-                userMenuController.setWelcomeId("Bienvenido/a " + user.getPersonFirstName());
+                userMenuController.setAtm(atm);
+                userMenuController.setWelcomeId("Bienvenido/a " + atm.getUser().getPersonFirstName());
 
                 stage.show();
             }catch (IOException e){
