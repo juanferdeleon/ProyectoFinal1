@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="printReceipt.PrintReceiptController">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="printReceipt.PrintReceiptController">
    <children>
       <Label layoutX="266.0" layoutY="209.0" text="¡Su transaccion ha sido realizada exitosamente!">
          <font>
@@ -27,7 +27,7 @@
             <Font name="Century Gothic" size="40.0" />
          </font>
       </Label>
-      <Button layoutX="410.0" layoutY="517.0" mnemonicParsing="false" text="&lt;">
+      <Button layoutX="410.0" layoutY="517.0" mnemonicParsing="false" onAction="#printReceipt" text="&lt;">
          <font>
             <Font name="Century Gothic" size="18.0" />
          </font>

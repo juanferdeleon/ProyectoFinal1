@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accountBalanceMenu.AccountBalanceMenuController">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accountBalanceMenu.AccountBalanceMenuController">
    <children>
       <Label layoutX="470.0" layoutY="176.0" text="Estado de Cuenta">
          <font>
@@ -27,7 +27,7 @@
             <Font name="Century Gothic" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="839.0" layoutY="557.0" mnemonicParsing="false" text="Imprimir">
+      <Button layoutX="839.0" layoutY="557.0" mnemonicParsing="false" onAction="#printReceipt" text="Imprimir">
          <font>
             <Font name="Century Gothic" size="18.0" />
          </font>

@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import objects.ATM;
+import objects.Led;
 import people.User;
 import userMenu.UserMenuController;
 
@@ -17,6 +18,21 @@ public class PrintReceiptController {
     ATM atm = new ATM();
 
     public void doNotPrintReceipt(ActionEvent event){
+        changeWindow(event);
+    }
+
+    public void printReceipt(ActionEvent event) {
+        try{
+            Led led = new Led();
+            led.connect("COM3");
+            changeWindow(event);
+        }catch (Exception e) {
+        }
+    }
+
+    public void setAtm(ATM atm){this.atm = atm;}
+
+    public void changeWindow(ActionEvent event){
         Parent root1;
 
         try {
@@ -39,7 +55,5 @@ public class PrintReceiptController {
             e.printStackTrace();
         }
     }
-
-    public void setAtm(ATM atm){this.atm = atm;}
 
 }
