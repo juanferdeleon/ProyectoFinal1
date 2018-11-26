@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class ATM {
-    private ArrayList<Money> amountOfMoney;
+
     private User user;
 
     public void withdrawMoney(Integer withdrawalAmmount){

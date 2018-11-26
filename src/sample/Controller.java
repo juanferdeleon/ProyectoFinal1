@@ -10,12 +10,14 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import objects.ATM;
+import objects.Money;
 import people.User;
 import userMenu.UserMenuController;
 
 import java.io.IOException;
 import java.sql.*;
 import java.time.Instant;
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -31,6 +33,8 @@ public class Controller {
         Parent root1;
 
         User user = checkIfUser(connectToDB(), Integer.parseInt(accountNo.getText()), Integer.parseInt(accountPassword.getText()));
+        ArrayList<Money> amountOfMoney = new ArrayList<>();
+        System.out.println(amountOfMoney.size());
         atm.setUser(user);
 
         if ( atm.getUser()!= null){
