@@ -98,7 +98,7 @@ public class Controller {
     public ResultSet connectToDB(){
         try{
             Class.forName("org.postgresql.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ATM", "postgres", "postgres");
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ATM", "postgres", "0k2hbtvy");
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM public.users");
             ResultSet resultSet = preparedStatement.executeQuery();
             return resultSet;

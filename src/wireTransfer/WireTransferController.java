@@ -90,7 +90,7 @@ public class WireTransferController {
         try{
             Double newAmmount = user.getAccountBalance() - withdrawalAmmount;
             Class.forName("org.postgresql.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ATM", "postgres", "postgres");
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ATM", "postgres", "0k2hbtvy");
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE public.users " +
                     "SET account_balance=" + newAmmount +
                     " WHERE id=" + user.getPersonId() + ";");
@@ -105,7 +105,7 @@ public class WireTransferController {
         try{
             Double newAmmount = user.getAccountBalance() + depositAmount;
             Class.forName("org.postgresql.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ATM", "postgres", "postgres");
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ATM", "postgres", "0k2hbtvy");
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE public.users " +
                     "SET account_balance=" + newAmmount +
                     " WHERE id=" + user.getPersonId() + ";");
@@ -212,7 +212,7 @@ public class WireTransferController {
     public ResultSet connectToDB(){
         try{
             Class.forName("org.postgresql.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ATM", "postgres", "postgres");
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ATM", "postgres", "0k2hbtvy");
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM public.users");
             ResultSet resultSet = preparedStatement.executeQuery();
             return resultSet;
