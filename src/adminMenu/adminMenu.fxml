@@ -16,7 +16,7 @@
             <Font name="Century Gothic" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="338.0" layoutY="433.0" mnemonicParsing="false" text="&lt;">
+      <Button layoutX="338.0" layoutY="433.0" mnemonicParsing="false" onAction="#transactionsWindow" text="&lt;">
          <font>
             <Font name="Century Gothic" size="18.0" />
          </font>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminMenu.TransactionsOfTheDayController">
+   <children>
+      <Label layoutX="518.0" layoutY="122.0" text="Transacciones">
+         <font>
+            <Font name="Century Gothic" size="48.0" />
+         </font></Label>
+      <TableView fx:id="transactionsTable" layoutX="430.0" layoutY="213.0" prefHeight="350.0" prefWidth="507.0">
+        <columns>
+          <TableColumn fx:id="acctNo" maxWidth="169.0" minWidth="169.0" prefWidth="169.0" resizable="false" text="No. de Cuenta" />
+          <TableColumn fx:id="amountWithdrawn" maxWidth="169.0" minWidth="169.0" prefWidth="169.0" resizable="false" text="Cantidad Retirada" />
+            <TableColumn fx:id="date" maxWidth="169.0" minWidth="169.0" prefWidth="169.0" resizable="false" text="Fecha" />
+        </columns>
+      </TableView>
+      <Button layoutX="430.0" layoutY="610.0" mnemonicParsing="false" text="Imprimir">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="879.0" layoutY="610.0" mnemonicParsing="false" onAction="#exit" text="Salir">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

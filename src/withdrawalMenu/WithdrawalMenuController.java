@@ -34,6 +34,7 @@ public class WithdrawalMenuController {
             VariableAmountMenuController variableAmountMenuController = fxmlLoader.getController();
             variableAmountMenuController.setAtm(atm);
 
+
             stage.show();
         }catch (IOException e){
             e.printStackTrace();
